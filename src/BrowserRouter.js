@@ -12,20 +12,25 @@ import LogoutButton from './LogoutButton';
 import Login from './Login';
 import Profile from './Profile';
 import { withAuth0 } from '@auth0/auth0-react';
+
 class BrowserRouter extends React.Component {
   render() {
+    // console.log('browserroute:', this.props);
     return (
       <IsLoadingAndError>
         <Header
-          loggedIn={this.props.auth0.isAuthenticated} />
+          loggedIn={this.props.props.auth0.isAuthenticated} />
         <Switch>
           <Route exact path="/">
             {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}
-            {this.props.auth0.isAuthenticated ?
-              <>
-                <BestBooks />
-
-              </> : <Login />}
+            {this.props.props.auth0.isAuthenticated ?
+              
+              <BestBooks />
+              : 
+              <Login
+              props = {this.props.props}
+              makeRequest = {this.props.makeRequest}
+              />}
           </Route>
           {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
           <Route exact path="/profile">

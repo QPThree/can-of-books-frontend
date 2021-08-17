@@ -4,18 +4,17 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import { withAuth0 } from '@auth0/auth0-react';
-import axios from 'axios';
+
 
 class App extends React.Component {
-
-  
-
   render() {
     console.log('app', this.props);
     return (
       <>
         <Router>
-          <BrowserRouter />
+          <BrowserRouter
+          props = {this.props}
+           />
         </Router>
       </>
     );
