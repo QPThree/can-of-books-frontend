@@ -17,6 +17,7 @@ class MyFavoriteBooks extends React.Component {
     }
   }
   componentDidMount = async () => {
+    try{
     console.log('app.js makeRequest:', this.props.auth0)
     const { getIdTokenClaims } = this.props.auth0;
     let tokenClaims = await getIdTokenClaims();
@@ -31,7 +32,9 @@ class MyFavoriteBooks extends React.Component {
       books: serverResponse.data,
       renderBooks: true,
     })
-    console.log('Success!', this.state.books[0].title);
+  } catch (err){
+    console.log(err.response);
+  }
   }
   render() {
     return (

@@ -1,21 +1,39 @@
 # Can of Books
 
 **Author**: Quentin P Young III, Taylor White
-**Version**: 1.0.0
+**Version**: 2.0.0 - book data now retrieved from a MongoDB
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
 
-## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
-
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+
+### UML
+
+![With MongoDB](./img/withmongodb.jpg)
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+08-18-2021 9:05pm MongoDB now allows for persistent data. Database data is passed from server-side.s
 
-## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+## Features
+
+*Feature 2: MongoDb*
+
+Estimate of time needed to complete: 120min
+
+Start time: 8:45pm 13AUG2021
+
+Finish time: 9:00pm 14AUG2021
+
+Actual time needed to complete: 145 min
+
+*Feature 1: Auth0*
+
+Estimate of time needed to complete: 180min
+
+Start time: 2:30pm 14AUG2021
+
+Finish time: 6:30pm 14AUG2021
+
+Actual time needed to complete: 300 min
