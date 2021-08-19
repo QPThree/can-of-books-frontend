@@ -16,9 +16,9 @@ class MyFavoriteBooks extends React.Component {
       headers: {"Authorization" : `Bearer ${jwt}`},
     };
   
-    const serverResponse = await axios.get('http://localhost:3001/test', config);
+    const serverResponse = await axios.get('http://localhost:3001/books', config);
   
-    console.log('Success!:  ', serverResponse);
+    console.log('Success!', serverResponse);
   }
   render() {
     return(
