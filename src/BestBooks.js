@@ -91,7 +91,6 @@ class MyFavoriteBooks extends React.Component {
             closeForm={this.closeForm}
             handleCreateBook={this.handleCreateBook}
             userEmail={this.props.auth0.user.email} />
-
           : ''}
         </Jumbotron>
         <CardColumns>
