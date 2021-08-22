@@ -13,7 +13,6 @@ class Header extends React.Component {
         {this.props.loggedIn ?
         <Link to="/profile">Profile</Link> : 
         ''}
-        
         {/* TODO: if the user is logged in, render the `LogoutButton` - if the user is logged out, render the `LoginButton` */}
         {this.props.loggedIn ?
         <LogoutButton>Profile</LogoutButton> : 
