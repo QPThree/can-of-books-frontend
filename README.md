@@ -18,6 +18,16 @@
 
 ## Features
 
+*Feature 3: Add Books*
+
+Estimate of time needed to complete: 180min
+
+Start time: 1:45pm 21AUG2021
+
+Finish time:
+
+Actual time needed to complete: 
+
 *Feature 2: MongoDb*
 
 Estimate of time needed to complete: 120min
