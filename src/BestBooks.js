@@ -108,13 +108,13 @@ class MyFavoriteBooks extends React.Component {
   }
   render() {
     return (
-      <Container>
-        <Jumbotron>
-          <h1>My Favorite Books</h1>
+      <Container className="mainContainer">
+        <Jumbotron className = "jumbotron">
+          <h1>My Bookshelf</h1>
           <h3>
             This is a collection of my favorite books
           </h3>
-          <Button variant="primary" onClick={this.showForm}>Add Book</Button>
+          <Button className="addButton" onClick={this.showForm}>Add Book</Button>
           {this.state.renderForm ?
             <BookFormModal
               renderForm={this.state.renderForm}
@@ -126,7 +126,7 @@ class MyFavoriteBooks extends React.Component {
         <CardColumns>
           {this.state.books.length > 0 ?
             this.state.books.map(book => (
-              <Card key={book._id}>
+              <Card className="bookCard shadow p-3 mb-5 rounded" key={book._id}>
                 <Card.Header>
                   <h2>{book.title}</h2>
                 </Card.Header>
@@ -135,8 +135,8 @@ class MyFavoriteBooks extends React.Component {
                 </Card.Body>
                 <Card.Footer>
                   <h4>{book.status}</h4>
-                  <Button variant="outline-danger" onClick={() => this.handleDelete(book._id, book.email)}>Delete</Button>
-                  <Button variant="outline-info" onClick={() => this.showEditForm(book)}>Edit</Button>
+                  <Button className="m-1" variant="outline-danger" onClick={() => this.handleDelete(book._id, book.email)}><i class="bi bi-trash"></i></Button>
+                  <Button className="m-1" variant="outline-info" onClick={() => this.showEditForm(book)}><i class="bi bi-pencil"></i></Button>
                 </Card.Footer>
               </Card>
             ))

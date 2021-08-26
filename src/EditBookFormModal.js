@@ -60,7 +60,7 @@ class EditBookFormModal extends React.Component {
               <Form.Label>Status</Form.Label>
               <Form.Control type="text" onChange={this.handleStatus} value={this.state.status} />
             </Form.Group>
-            <Button variant="success" type="submit">
+            <Button variant="success" type="submit" className="m-1">
               Submit
             </Button >
           </Form>
