@@ -1,7 +1,7 @@
 # Can of Books
 
 **Author**: Quentin P Young III, Taylor White
-**Version**: 3.0.0 - User can add and delete books
+**Version**: 4.0.0 - User can now edit their added books
 
 ## Overview
 
@@ -15,11 +15,23 @@ With Can of Books user's can add books to their book shelf. Books can have a tit
 
 ## Change Log
 
+08-25-2021 8:50pm books added to user's bookshelf can now be edited.
+
 08-21-2021 7:05pm books can now be added or deleted from the user's personal database.
 
 08-18-2021 9:05pm MongoDB now allows for persistent data. Database data is passed from server-side.s
 
 ## Features
+
+*Feature 5: Edit Books in Bookshelf*
+
+Estimate of time needed to complete: 120min
+
+Start time: 8:30pm 24AUG2021
+
+Finish time: 8:45pm 25AUG2021
+
+Actual time needed to complete: 120 min
 
 *Feature 4: Delete Books*
 
