@@ -8,7 +8,8 @@ import './BestBooks.css';
 import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react';
 import BookFormModal from './BookFormModal';
-import { CardColumns } from 'react-bootstrap';
+import { CardColumns, Modal } from 'react-bootstrap';
+import EditBookFormModal from './EditBookFormModal';
 
 class MyFavoriteBooks extends React.Component {
   constructor(props) {
@@ -17,6 +18,8 @@ class MyFavoriteBooks extends React.Component {
       books: [],
       renderBooks: false,
       renderForm: false,
+      renderEditForm: false,
+      selectedBook: null,
     }
   }
   componentDidMount = async () => {
@@ -44,7 +47,18 @@ class MyFavoriteBooks extends React.Component {
       renderForm: true,
     });
   }
+  showEditForm = (book) => {
+    this.setState({
+      renderEditForm: true,
+      selectedBook: book,
+    })
+  }
 
+  closeEditForm = () => {
+    this.setState({
+      renderEditForm: false,
+    })
+  }
   closeForm = () => {
     this.setState({
       renderForm: false,
@@ -64,6 +78,7 @@ class MyFavoriteBooks extends React.Component {
 
   handleDelete = async (id, email) => {
     try {
+      console.log('email inside handledelete:', email);
       if (email === this.props.auth0.user.email) {
         console.log(`email: ${email}, props.auth0.user.email: ${this.props.auth0.user.email}`);
         await axios.delete(`http://localhost:3001/books/${id}`);
@@ -76,27 +91,42 @@ class MyFavoriteBooks extends React.Component {
       console.log('Error on front end trying to delete:', err);
     }
   }
+
+  handleUpdate = async (book) => {
+    console.log('selected book id:', this.state.selectedBook);
+    await axios.put(`http://localhost:3001/books/${this.state.selectedBook._id}`, book);
+    const updatedBooks = this.state.books.map(bookInState => {
+      if (bookInState._id === this.state.selectedBook._id) {
+        console.log(bookInState._id);
+        return book;
+      }
+      else {
+        return bookInState;
+      }
+    });
+    this.setState({ books: updatedBooks });
+  }
   render() {
     return (
-      <Container>
-        <Jumbotron>
-          <h1>My Favorite Books</h1>
+      <Container className="mainContainer">
+        <Jumbotron className = "jumbotron">
+          <h1>My Bookshelf</h1>
           <h3>
             This is a collection of my favorite books
           </h3>
-          <Button variant="primary" onClick={this.showForm}>Add Book</Button>
-        {this.state.renderForm ?
-          <BookFormModal
-            renderForm={this.state.renderForm}
-            closeForm={this.closeForm}
-            handleCreateBook={this.handleCreateBook}
-            userEmail={this.props.auth0.user.email} />
-          : ''}
+          <Button className="addButton" onClick={this.showForm}>Add Book</Button>
+          {this.state.renderForm ?
+            <BookFormModal
+              renderForm={this.state.renderForm}
+              closeForm={this.closeForm}
+              handleCreateBook={this.handleCreateBook}
+              userEmail={this.props.auth0.user.email} />
+            : ''}
         </Jumbotron>
         <CardColumns>
           {this.state.books.length > 0 ?
             this.state.books.map(book => (
-              <Card key={book._id}>
+              <Card className="bookCard shadow p-3 mb-5 rounded" key={book._id}>
                 <Card.Header>
                   <h2>{book.title}</h2>
                 </Card.Header>
@@ -105,13 +135,24 @@ class MyFavoriteBooks extends React.Component {
                 </Card.Body>
                 <Card.Footer>
                   <h4>{book.status}</h4>
-                  <Button variant="outline-danger" onClick={() => this.handleDelete(book._id, book.email)}>Delete</Button>
+                  <Button className="m-1" variant="outline-danger" onClick={() => this.handleDelete(book._id, book.email)}><i class="bi bi-trash"></i></Button>
+                  <Button className="m-1" variant="outline-info" onClick={() => this.showEditForm(book)}><i class="bi bi-pencil"></i></Button>
                 </Card.Footer>
               </Card>
             ))
             : ''}
         </CardColumns>
-        
+        <Modal show={this.state.renderEditForm} onHide={this.closeEditForm}>
+          <Modal.Header closeButton>
+            <h2>Edit Book</h2>
+          </Modal.Header>
+          <EditBookFormModal
+            book={this.state.selectedBook}
+            handleUpdate={this.handleUpdate}
+            show={this.state.renderEditForm}
+            closeEditForm={this.closeEditForm}
+            userEmail={this.props.auth0.user.email} />
+        </Modal>
       </Container>
     )
   }

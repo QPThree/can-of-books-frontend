@@ -37,10 +37,10 @@ class BookFormModal extends React.Component {
               <Form.Label>Status</Form.Label>
               <Form.Control type="text" />
             </Form.Group>
-            <Button variant="success" type="submit">
+            <Button variant="success" type="submit" className="m-1">
               Submit
             </Button >
-            <Button variant="outline-danger" onClick={this.closeForm}>
+            <Button variant="outline-danger" className="m-1" onClick={this.closeForm}>
               Close
             </Button>
           </Form>

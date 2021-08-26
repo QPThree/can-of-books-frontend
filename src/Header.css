@@ -1,0 +1,15 @@
+.navbar {
+  background-color: #3d405b ;
+}
+.navbar h1{
+  background-color: #3d405b ;
+  font-family: 'Hina Mincho', serif;
+}
+.headerlink{
+  color:white;
+  font-size: 1.5em;
+}
+.navbar .logoutbutton{
+  background-color: #e07a5f;
+  border-color: #e07a5f;
+}
